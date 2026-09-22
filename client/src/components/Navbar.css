@@ -1,0 +1,144 @@
+.navbar {
+  width: 100%;
+  height: 76px;
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid #ececec;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  width: min(1180px, 92%);
+  height: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.logo-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #ffd600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #171717;
+  font-weight: 800;
+  font-size: 21px;
+}
+
+.logo-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-name {
+  font-size: 18px;
+  font-weight: 800;
+  color: #171717;
+}
+
+.logo-subtitle {
+  font-size: 10px;
+  color: #8a8a8a;
+  letter-spacing: 1.3px;
+  font-weight: 600;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  transition: 0.2s ease;
+}
+
+.nav-link:hover,
+.active-link {
+  color: #111;
+}
+
+.nav-cta {
+  background: #181818;
+  color: #fff;
+  padding: 11px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.nav-cta:hover {
+  background: #ffd600;
+  color: #111;
+}
+
+.menu-button {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border: none;
+  background: transparent;
+}
+
+.menu-button span {
+  width: 23px;
+  height: 2px;
+  background: #111;
+  display: block;
+  margin: 5px auto;
+  transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+  .menu-button {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 76px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    padding: 25px 5%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    border-bottom: 1px solid #eee;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: 0.25s ease;
+  }
+
+  .nav-links.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-link {
+    padding: 12px;
+  }
+
+  .nav-cta {
+    text-align: center;
+    margin-top: 5px;
+  }
+}

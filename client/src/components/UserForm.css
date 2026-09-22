@@ -1,0 +1,231 @@
+.form-page {
+  min-height: calc(100vh - 76px);
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(255, 214, 0, 0.12),
+      transparent 25%
+    ),
+    #f8f9fb;
+  padding: 70px 0;
+}
+
+.form-page-container {
+  width: min(1100px, 92%);
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 470px;
+  gap: 80px;
+  align-items: center;
+}
+
+.form-badge {
+  display: inline-block;
+  background: #fff3a3;
+  color: #6e5d00;
+  border-radius: 50px;
+  padding: 8px 13px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+}
+
+.form-info h1 {
+  font-size: clamp(40px, 5vw, 63px);
+  line-height: 1.05;
+  letter-spacing: -2px;
+  max-width: 550px;
+}
+
+.form-info h1 span {
+  color: #c5a400;
+}
+
+.form-info > p {
+  color: #777;
+  max-width: 520px;
+  line-height: 1.7;
+  margin-top: 20px;
+}
+
+.process-list {
+  margin-top: 35px;
+  max-width: 470px;
+}
+
+.process-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.process-item > span {
+  color: #b89a00;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.process-item strong {
+  font-size: 14px;
+}
+
+.process-item p {
+  font-size: 12px;
+  color: #888;
+  margin-top: 4px;
+}
+
+.user-form-card {
+  background: white;
+  padding: 35px;
+  border-radius: 22px;
+  border: 1px solid #ececec;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.08);
+}
+
+.form-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 30px;
+}
+
+.form-icon {
+  width: 43px;
+  height: 43px;
+  background: #ffd600;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 23px;
+}
+
+.form-card-heading h2 {
+  font-size: 23px;
+}
+
+.form-card-heading p {
+  color: #888;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.input-group input {
+  width: 100%;
+  height: 51px;
+  padding: 0 15px;
+  border: 1px solid #dedede;
+  border-radius: 10px;
+  outline: none;
+  font-size: 14px;
+  background: #fafafa;
+  transition: 0.2s ease;
+}
+
+.input-group input:focus {
+  border-color: #c7a700;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(255, 214, 0, 0.12);
+}
+
+.input-error {
+  color: #d63a3a;
+  font-size: 10px;
+  margin-top: 6px;
+}
+
+.submit-button {
+  margin-top: 5px;
+  width: 100%;
+  height: 52px;
+  background: #171717;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  transition: 0.25s ease;
+}
+
+.submit-button:hover {
+  background: #ffd600;
+  color: #111;
+}
+
+.form-footer {
+  border-top: 1px solid #eee;
+  margin-top: 25px;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+}
+
+.form-footer a {
+  color: #9b8200;
+  font-weight: 700;
+  margin-left: 5px;
+}
+
+@media (max-width: 900px) {
+  .form-page-container {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .form-info {
+    text-align: center;
+  }
+
+  .form-info h1,
+  .form-info > p,
+  .process-list {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .process-item {
+    text-align: left;
+  }
+
+  .user-form-card {
+    width: min(520px, 100%);
+    margin: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .form-page {
+    padding: 45px 0;
+  }
+
+  .form-info h1 {
+    letter-spacing: -1.5px;
+  }
+
+  .user-form-card {
+    padding: 24px 19px;
+  }
+}
