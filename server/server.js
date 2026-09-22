@@ -1,30 +1,32 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 
 import connectDB from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
 
-
-// Load environment variables
 dotenv.config();
 
-
-// Create Express application
 const app = express();
 
+// ----------------------------------------------------
+// Path setup
+// ----------------------------------------------------
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// ----------------------------------------------------
 // Connect MongoDB
+// ----------------------------------------------------
+
 connectDB();
 
-
+// ----------------------------------------------------
 // Middleware
-
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-  })
-);
+// ----------------------------------------------------
 
 app.use(express.json());
 
@@ -34,40 +36,68 @@ app.use(
   })
 );
 
+// CORS is mainly needed during local development
+if (process.env.NODE_ENV !== "production") {
+  app.use(
+    cors({
+      origin: "http://localhost:5173",
+    })
+  );
+}
 
-// Test route
-app.get("/", (req, res) => {
+// ----------------------------------------------------
+// API Health Check
+// ----------------------------------------------------
+
+app.get("/api/health", (req, res) => {
   res.status(200).json({
     success: true,
     message: "MERN CRUD API is running.",
   });
 });
 
-
-// User routes
+// ----------------------------------------------------
+// API Routes
+// ----------------------------------------------------
 
 app.use("/api/users", userRoutes);
 
-
-// Handle unknown API routes
-
-app.use((req, res) => {
+// Unknown API route
+app.use("/api", (req, res) => {
   res.status(404).json({
     success: false,
-    message: "Route not found.",
+    message: "API route not found.",
   });
 });
 
+// ----------------------------------------------------
+// Production React Frontend
+// ----------------------------------------------------
 
-// Server port
+if (process.env.NODE_ENV === "production") {
+  const clientDistPath = path.join(
+    __dirname,
+    "../client/dist"
+  );
+
+  app.use(express.static(clientDistPath));
+
+  // React Router fallback
+  app.get(/.*/, (req, res) => {
+    res.sendFile(
+      path.join(clientDistPath, "index.html")
+    );
+  });
+}
+
+// ----------------------------------------------------
+// Server
+// ----------------------------------------------------
 
 const PORT = process.env.PORT || 5000;
 
-
-// Start server
-
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(
-    `Server running on http://localhost:${PORT}`
+    `Server running on 0.0.0.0:${PORT}`
   );
 });
